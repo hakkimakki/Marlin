@@ -270,7 +270,7 @@
 //
 // Misc. Functions
 //
-#define SDSS               53
+#define SDSS               45
 #define LED_PIN            13
 
 #ifndef FILWIDTH_PIN
@@ -335,7 +335,7 @@
   //
   #if ENABLED(REPRAPWORLD_GRAPHICAL_LCD)
 
-    #define LCD_PINS_RS         49   // CS chip select /SS chip slave select
+    #define LCD_PINS_RS         49   // 49 CS chip select /SS chip slave select
     #define LCD_PINS_ENABLE     51   // SID (MOSI)
     #define LCD_PINS_D4         52   // SCK (CLK) clock
 
