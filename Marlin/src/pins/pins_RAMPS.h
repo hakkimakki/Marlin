@@ -215,7 +215,7 @@
 //
 // Misc. Functions
 //
-#define SDSS               53
+#define SDSS               45
 #define LED_PIN            13
 
 #ifndef FILWIDTH_PIN
@@ -436,7 +436,7 @@
       #endif
 
       #define BTN_ENC           35
-      #define SD_DETECT_PIN     49
+      //#define SD_DETECT_PIN     49
       #define KILL_PIN          41
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
