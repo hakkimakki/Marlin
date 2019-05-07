@@ -67,84 +67,84 @@
   #ifdef IS_RAMPS_13
     #define SERVO0_PIN      7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
   #else
-    #define SERVO0_PIN     11
+    #define SERVO0_PIN     48
   #endif
 #endif
-#define SERVO1_PIN          6
-#define SERVO2_PIN          5
+#define SERVO1_PIN          -1
+#define SERVO2_PIN          -1
 #ifndef SERVO3_PIN
-  #define SERVO3_PIN        4
+  #define SERVO3_PIN        -1
 #endif
 
 //
 // Limit Switches
 //
-#define X_MIN_PIN           3
+#define X_MIN_PIN           38
 #ifndef X_MAX_PIN
-  #define X_MAX_PIN         2
+  #define X_MAX_PIN         -1
 #endif
-#define Y_MIN_PIN          14
-#define Y_MAX_PIN          15
-#define Z_MIN_PIN          18
-#define Z_MAX_PIN          19
+#define Y_MIN_PIN          83
+#define Y_MAX_PIN          -1
+#define Z_MIN_PIN          82
+#define Z_MAX_PIN          -1
 
 //
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN  32
+  #define Z_MIN_PROBE_PIN  49
 #endif
 
 //
 // Steppers
 //
-#define X_STEP_PIN         54
-#define X_DIR_PIN          55
-#define X_ENABLE_PIN       38
+#define X_STEP_PIN         60
+#define X_DIR_PIN          59
+#define X_ENABLE_PIN       65
 #ifndef X_CS_PIN
-  #define X_CS_PIN         53
+  #define X_CS_PIN         61
 #endif
 
-#define Y_STEP_PIN         60
-#define Y_DIR_PIN          61
-#define Y_ENABLE_PIN       56
+#define Y_STEP_PIN         57
+#define Y_DIR_PIN          56
+#define Y_ENABLE_PIN       64
 #ifndef Y_CS_PIN
-  #define Y_CS_PIN         49
+  #define Y_CS_PIN         58
 #endif
 
-#define Z_STEP_PIN         46
-#define Z_DIR_PIN          48
-#define Z_ENABLE_PIN       62
+#define Z_STEP_PIN         54
+#define Z_DIR_PIN          69
+#define Z_ENABLE_PIN       63
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         40
+  #define Z_CS_PIN         55
 #endif
 
-#define E0_STEP_PIN        26
-#define E0_DIR_PIN         28
-#define E0_ENABLE_PIN      24
+#define E0_STEP_PIN        67
+#define E0_DIR_PIN         66
+#define E0_ENABLE_PIN      62
 #ifndef E0_CS_PIN
-  #define E0_CS_PIN        42
+  #define E0_CS_PIN        68
 #endif
 
-#define E1_STEP_PIN        36
-#define E1_DIR_PIN         34
-#define E1_ENABLE_PIN      30
+#define E1_STEP_PIN        -1
+#define E1_DIR_PIN         -1
+#define E1_ENABLE_PIN      -1
 #ifndef E1_CS_PIN
-  #define E1_CS_PIN        44
+  #define E1_CS_PIN        -1
 #endif
 
 //
 // Temperature Sensors
 //
-#define TEMP_0_PIN         13   // Analog Input
-#define TEMP_1_PIN         15   // Analog Input
-#define TEMP_BED_PIN       14   // Analog Input
+#define TEMP_0_PIN         22   // Analog Input
+#define TEMP_1_PIN         24   // Analog Input
+#define TEMP_BED_PIN       23   // Analog Input
 
 // SPI for Max6675 or Max31855 Thermocouple
 #if DISABLED(SDSUPPORT)
   #define MAX6675_SS_PIN   66   // Do not use pin 53 if there is even the remote possibility of using Display/SD card
 #else
-  #define MAX6675_SS_PIN   66   // Do not use pin 49 as this is tied to the switch inside the SD card socket to detect if there is an SD card present
+  #define MAX6675_SS_PIN   -1   // Do not use pin 49 as this is tied to the switch inside the SD card socket to detect if there is an SD card present
 #endif
 
 //
@@ -170,6 +170,7 @@
 #ifndef MOSFET_D_PIN
   #define MOSFET_D_PIN     -1
 #endif
+/*
 #ifndef RAMPS_D8_PIN
   #define RAMPS_D8_PIN      8
 #endif
@@ -179,11 +180,11 @@
 #ifndef RAMPS_D10_PIN
   #define RAMPS_D10_PIN    10
 #endif
-
-#define HEATER_0_PIN       RAMPS_D10_PIN
+*/
+#define HEATER_0_PIN       46
 
 #if ENABLED(IS_RAMPS_EFB)                      // Hotend, Fan, Bed
-  #define HEATER_BED_PIN   RAMPS_D8_PIN
+  #define HEATER_BED_PIN   5
 #elif ENABLED(IS_RAMPS_EEF)                    // Hotend, Hotend, Fan
   #define HEATER_1_PIN     RAMPS_D9_PIN
 #elif ENABLED(IS_RAMPS_EEB)                    // Hotend, Hotend, Bed
@@ -202,7 +203,7 @@
 
 #ifndef FAN_PIN
   #if EITHER(IS_RAMPS_EFB, IS_RAMPS_EFF)          // Hotend, Fan, Bed or Hotend, Fan, Fan
-    #define FAN_PIN        RAMPS_D9_PIN
+    #define FAN_PIN        4
   #elif EITHER(IS_RAMPS_EEF, IS_RAMPS_SF)         // Hotend, Hotend, Fan or Spindle, Fan
     #define FAN_PIN        RAMPS_D8_PIN
   #elif ENABLED(IS_RAMPS_EEB)                  // Hotend, Hotend, Bed
@@ -215,7 +216,7 @@
 //
 // Misc. Functions
 //
-#define SDSS               45
+#define SDSS               74
 #define LED_PIN            13
 
 #ifndef FILWIDTH_PIN
@@ -224,11 +225,11 @@
 
 // RAMPS 1.4 DIO 4 on the servos connector
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN    4
+  #define FIL_RUNOUT_PIN    -1
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN        12
+  #define PS_ON_PIN        -1
 #endif
 
 #define AUX2_PINS_FREE !( BOTH(ULTRA_LCD, NEWPANEL) && ANY(PANEL_ONE, VIKI2, miniVIKI, MINIPANEL, REPRAPWORLD_KEYPAD) )
@@ -327,13 +328,13 @@
 // Průša i3 MK2 Multiplexer Support
 //
 #ifndef E_MUX0_PIN
-  #define E_MUX0_PIN 40   // Z_CS_PIN
+  #define E_MUX0_PIN -1   // Z_CS_PIN
 #endif
 #ifndef E_MUX1_PIN
-  #define E_MUX1_PIN 42   // E0_CS_PIN
+  #define E_MUX1_PIN -1   // E0_CS_PIN
 #endif
 #ifndef E_MUX2_PIN
-  #define E_MUX2_PIN 44   // E1_CS_PIN
+  #define E_MUX2_PIN -1   // E1_CS_PIN
 #endif
 
 //////////////////////////
@@ -425,19 +426,19 @@
 
     #if ENABLED(REPRAP_DISCOUNT_SMART_CONTROLLER)
 
-      #define BEEPER_PIN        37
+      #define BEEPER_PIN        73
 
       #if ENABLED(CR10_STOCKDISPLAY)
-        #define BTN_EN1         17
-        #define BTN_EN2         23
+        #define BTN_EN1         15
+        #define BTN_EN2         14
       #else
         #define BTN_EN1         31
         #define BTN_EN2         33
       #endif
 
-      #define BTN_ENC           35
+      #define BTN_ENC           72
       //#define SD_DETECT_PIN     49
-      #define KILL_PIN          41
+      #define KILL_PIN          -1
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
         #define LCD_BACKLIGHT_PIN 39
