@@ -264,13 +264,13 @@
 //
 #if ENABLED(TMC_USE_SW_SPI)
   #ifndef TMC_SW_MOSI
-    #define TMC_SW_MOSI    66
+    #define TMC_SW_MOSI    51
   #endif
   #ifndef TMC_SW_MISO
-    #define TMC_SW_MISO    44
+    #define TMC_SW_MISO    50
   #endif
   #ifndef TMC_SW_SCK
-    #define TMC_SW_SCK     64
+    #define TMC_SW_SCK     52
   #endif
 #endif
 
@@ -365,9 +365,9 @@
 
     #if ENABLED(CR10_STOCKDISPLAY)
 
-      #define LCD_PINS_RS       27
-      #define LCD_PINS_ENABLE   29
-      #define LCD_PINS_D4       25
+      #define LCD_PINS_RS       75 //CS
+      #define LCD_PINS_ENABLE   51 //MOSI
+      #define LCD_PINS_D4       52 //SCK
 
       #if DISABLED(NEWPANEL)
         #define BEEPER_PIN      37
