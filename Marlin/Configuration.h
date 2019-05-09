@@ -135,6 +135,8 @@
   #define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
 
+#define F_CPU 8000000
+
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
 //#define CUSTOM_MACHINE_NAME "3D Printer"

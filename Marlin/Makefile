@@ -450,7 +450,7 @@ endif
 # Be sure to regenerate speed_lookuptable.h with create_speed_lookuptable.py
 # if you are setting this to something other than 16MHz
 # Set to 16Mhz if not yet set.
-F_CPU ?= 16000000
+F_CPU ?= 8000000
 
 # Set to microcontroller if IS_MCU not yet set
 IS_MCU ?= 1
