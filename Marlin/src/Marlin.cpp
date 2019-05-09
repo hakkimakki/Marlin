@@ -671,6 +671,7 @@ void idle(
 ) {
 
     // Test PINs
+    /*
     pinMode(74, OUTPUT);
     pinMode(9, OUTPUT);
     digitalWrite(74, HIGH);   // turn the LED on (HIGH is the voltage level)
@@ -679,7 +680,7 @@ void idle(
     digitalWrite(74, LOW);    // turn the LED off by making the voltage LOW
     digitalWrite(9, LOW);
     delay(1000);
-
+    */
 
   #if ENABLED(MAX7219_DEBUG)
     max7219.idle_tasks();

@@ -35,10 +35,10 @@
   #define AVR_MOSI_PIN 5
   #define AVR_SS_PIN   4
 #elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
-  #define AVR_SCK_PIN  52
-  #define AVR_MISO_PIN 50
-  #define AVR_MOSI_PIN 51
-  #define AVR_SS_PIN   53
+  #define AVR_SCK_PIN  16
+  #define AVR_MISO_PIN 18
+  #define AVR_MOSI_PIN 17
+  #define AVR_SS_PIN   15
 #elif defined(__AVR_AT90USB1287__) || defined(__AVR_AT90USB1286__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB647__)
   #define AVR_SCK_PIN  21
   #define AVR_MISO_PIN 23

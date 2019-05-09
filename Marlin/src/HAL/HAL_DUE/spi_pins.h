@@ -47,13 +47,13 @@
   // defaults
   #define DUE_SOFTWARE_SPI
   #ifndef SCK_PIN
-    #define SCK_PIN           52
+    #define SCK_PIN           16
   #endif
   #ifndef MISO_PIN
-    #define MISO_PIN          50
+    #define MISO_PIN          18
   #endif
   #ifndef MOSI_PIN
-    #define MOSI_PIN          51
+    #define MOSI_PIN          17
   #endif
 #endif
 
