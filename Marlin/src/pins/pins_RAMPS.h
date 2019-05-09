@@ -438,7 +438,7 @@
 
       #define BTN_ENC           72
       //#define SD_DETECT_PIN     49
-      #define KILL_PIN          -1
+      #define KILL_PIN          32
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
         #define LCD_BACKLIGHT_PIN 39
