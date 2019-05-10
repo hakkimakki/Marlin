@@ -83,9 +83,9 @@
 #ifndef X_MAX_PIN
   #define X_MAX_PIN         -1
 #endif
-#define Y_MIN_PIN          83
+#define Y_MIN_PIN          79
 #define Y_MAX_PIN          -1
-#define Z_MIN_PIN          82
+#define Z_MIN_PIN          78
 #define Z_MAX_PIN          -1
 
 //
@@ -216,16 +216,16 @@
 //
 // Misc. Functions
 //
-#define SDSS               76
+#define SDSS               85
 #define LED_PIN            13
 
 #ifndef FILWIDTH_PIN
-  #define FILWIDTH_PIN      5   // Analog Input on AUX2
+  #define FILWIDTH_PIN      -1   // Analog Input on AUX2
 #endif
 
 // RAMPS 1.4 DIO 4 on the servos connector
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN    -1
+  #define FIL_RUNOUT_PIN    74
 #endif
 
 #ifndef PS_ON_PIN
@@ -365,7 +365,7 @@
 
     #if ENABLED(CR10_STOCKDISPLAY)
 
-      #define LCD_PINS_RS       75 //CS
+      #define LCD_PINS_RS       32 //CS
       #define LCD_PINS_ENABLE   30 //MOSI
       #define LCD_PINS_D4       31 //SCK
 
@@ -426,7 +426,7 @@
 
     #if ENABLED(REPRAP_DISCOUNT_SMART_CONTROLLER)
 
-      #define BEEPER_PIN        73
+      #define BEEPER_PIN        81
 
       #if ENABLED(CR10_STOCKDISPLAY)
         #define BTN_EN1         14
@@ -436,9 +436,9 @@
         #define BTN_EN2         33
       #endif
 
-      #define BTN_ENC           72
+      #define BTN_ENC           80
       //#define SD_DETECT_PIN     49
-      #define KILL_PIN          32
+      #define KILL_PIN          -1
 
       #if ENABLED(BQ_LCD_SMART_CONTROLLER)
         #define LCD_BACKLIGHT_PIN 39
