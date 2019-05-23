@@ -121,13 +121,13 @@ extern "C" {
 }
 
 // timers
-#define HAL_TIMER_RATE          ((F_CPU) / 8)    // i.e., 2MHz or 2.5MHz
+#define HAL_TIMER_RATE          ((F_CPU) / 8)    // i.e., 2MHz or 2.5MHz -> at 8MHz only 1MHz
 
 #define STEP_TIMER_NUM          1
 #define TEMP_TIMER_NUM          0
 #define PULSE_TIMER_NUM         STEP_TIMER_NUM
 
-#define TEMP_TIMER_FREQUENCY    ((F_CPU) / 64.0 / 256.0)
+#define TEMP_TIMER_FREQUENCY    ((F_CPU) / 34.0 / 256.0) // Fix for 8MHz 64.0 -> 32.0
 
 #define STEPPER_TIMER_RATE      HAL_TIMER_RATE
 #define STEPPER_TIMER_PRESCALE  8
@@ -160,10 +160,12 @@ FORCE_INLINE void HAL_timer_start(const uint8_t timer_num, const uint32_t freque
       // frequency on a 16MHz MCU. If you are going to change this, be
       // sure to regenerate speed_lookuptable.h with
       // create_speed_lookuptable.py
+      // -> 8Mhz resultingin 1Mhz Timer
       SET_CS(1, PRESCALER_8);  //  CS 2 = 1/8 prescaler
 
       // Init Stepper ISR to 122 Hz for quick starting
       // (F_CPU) / (STEPPER_TIMER_PRESCALE) / frequency
+      // 8Mhz resulting in 61.035 Hz
       OCR1A = 0x4000;
       TCNT1 = 0;
       break;
@@ -171,7 +173,8 @@ FORCE_INLINE void HAL_timer_start(const uint8_t timer_num, const uint32_t freque
     case TEMP_TIMER_NUM:
       // Use timer0 for temperature measurement
       // Interleave temperature interrupt with millies interrupt
-      OCR0B = 128;
+      // Fix for 8Mhz resulting in 128/2 = 64
+      OCR0B = 128; //128
       break;
   }
 }
