@@ -1293,10 +1293,12 @@ void Planner::check_axes_activity() {
         analogWrite(FAN_PIN, CALC_FAN_SPEED(0));
       #endif
       #if HAS_FAN1
-        analogWrite(FAN1_PIN, CALC_FAN_SPEED(1));
+        //analogWrite(FAN1_PIN, CALC_FAN_SPEED(1));
+        analogWrite(FAN1_PIN, int(255));
       #endif
       #if HAS_FAN2
-        analogWrite(FAN2_PIN, CALC_FAN_SPEED(2));
+        //analogWrite(FAN2_PIN, CALC_FAN_SPEED(2));
+        analogWrite(FAN2_PIN, int(255));
       #endif
     #endif
 

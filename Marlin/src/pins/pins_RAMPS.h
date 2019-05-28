@@ -85,7 +85,7 @@
 #endif
 #define Y_MIN_PIN          79
 #define Y_MAX_PIN          -1
-#define Z_MIN_PIN          78
+#define Z_MIN_PIN          49
 #define Z_MAX_PIN          -1
 
 //
@@ -136,9 +136,9 @@
 //
 // Temperature Sensors
 //
-#define TEMP_0_PIN         A4   // Analog Input
+#define TEMP_0_PIN         4   // Analog Input
 #define TEMP_1_PIN         -1   // Analog Input -> Nicht benutzt Leiterplatte
-#define TEMP_BED_PIN       A7   // Analog Input
+#define TEMP_BED_PIN       7   // Analog Input
 
 // SPI for Max6675 or Max31855 Thermocouple
 #if DISABLED(SDSUPPORT)
@@ -212,6 +212,10 @@
     #define FAN_PIN        RAMPS_D9_PIN
   #endif
 #endif
+
+#define FAN2_PIN 9
+
+#define FAN1_PIN 6
 
 //
 // Misc. Functions

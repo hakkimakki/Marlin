@@ -121,13 +121,13 @@ extern "C" {
 }
 
 // timers
-#define HAL_TIMER_RATE          ((F_CPU) / 8)    // i.e., 2MHz or 2.5MHz -> at 8MHz only 1MHz
+#define HAL_TIMER_RATE          ((F_CPU) / 4)    // i.e., 2MHz or 2.5MHz -> at 8MHz only 1MHz
 
 #define STEP_TIMER_NUM          1
 #define TEMP_TIMER_NUM          0
 #define PULSE_TIMER_NUM         STEP_TIMER_NUM
 
-#define TEMP_TIMER_FREQUENCY    ((F_CPU) / 34.0 / 256.0) // Fix for 8MHz 64.0 -> 32.0
+#define TEMP_TIMER_FREQUENCY    ((F_CPU) / 32.0 / 256.0) // Fix for 8MHz 64.0 -> 32.0
 
 #define STEPPER_TIMER_RATE      HAL_TIMER_RATE
 #define STEPPER_TIMER_PRESCALE  8
