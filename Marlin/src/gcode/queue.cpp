@@ -27,6 +27,8 @@
 #include "queue.h"
 #include "gcode.h"
 
+//#include <string.h>
+
 #include "../lcd/ultralcd.h"
 #include "../sd/cardreader.h"
 #include "../module/planner.h"
@@ -625,12 +627,13 @@ inline void get_serial_commands() {
 
           gcode_LastN = gcode_N;
         }
+        /*
         #if ENABLED(SDSUPPORT)
           // Pronterface "M29" and "M29 " has no line number
           else if (card.flag.saving && !is_M29(command))
             return gcode_line_error(PSTR(MSG_ERR_NO_CHECKSUM), i);
         #endif
-
+        */
         // Movement commands alert when stopped
         if (IsStopped()) {
           char* gpos = strchr(command, 'G');
@@ -856,6 +859,7 @@ void advance_command_queue() {
       else {
         // Write the string from the read buffer to SD
         card.write_command(command);
+        //SERIAL_ECHO_MSG(strstr_P(PSTR(command)," ")); // Test
         if (card.flag.logging)
           gcode.process_next_command(); // The card is saving because it's logging
         else
