@@ -573,16 +573,19 @@ inline void get_serial_commands() {
    * Loop while serial characters are incoming and the queue is not full
    */
   while (commands_in_queue < BUFSIZE && serial_data_available()) {
+    // Serial Interface Loop
     for (uint8_t i = 0; i < NUM_SERIAL; ++i) {
       int c;
       if ((c = read_serial(i)) < 0) continue;
-
+      // Safe the readed data
       char serial_char = c;
 
       /**
        * If the character ends the line
        */
       if (serial_char == '\n' || serial_char == '\r') {
+      //if (serial_char == 4) { // Experimaental
+        //serial_char = '\n'; // Experimanetal
 
         // Start with comment mode off
         serial_comment_mode[i] = false;
@@ -596,9 +599,11 @@ inline void get_serial_commands() {
         serial_line_buffer[i][serial_count[i]] = 0;       // Terminate string
         serial_count[i] = 0;                              // Reset buffer
 
-        char* command = serial_line_buffer[i];
+        char* command = serial_line_buffer[i]; // Save the command line
 
         while (*command == ' ') command++;                // Skip leading spaces
+        
+        // Process the single Lines
         char *npos = (*command == 'N') ? command : nullptr;  // Require the N parameter to start the line
 
         if (npos) {
@@ -613,7 +618,7 @@ inline void get_serial_commands() {
           gcode_N = strtol(npos + 1, nullptr, 10);
 
           if (gcode_N != gcode_LastN + 1 && !M110)
-            return gcode_line_error(PSTR(MSG_ERR_LINE_NO), i);
+            return gcode_line_error(PSTR(MSG_ERR_LINE_NO), i); // Request a Resend
 
           char *apos = strrchr(command, '*');
           if (apos) {
@@ -627,13 +632,13 @@ inline void get_serial_commands() {
 
           gcode_LastN = gcode_N;
         }
-        /*
+        
         #if ENABLED(SDSUPPORT)
           // Pronterface "M29" and "M29 " has no line number
           else if (card.flag.saving && !is_M29(command))
             return gcode_line_error(PSTR(MSG_ERR_NO_CHECKSUM), i);
         #endif
-        */
+        
         // Movement commands alert when stopped
         if (IsStopped()) {
           char* gpos = strchr(command, 'G');
@@ -672,7 +677,7 @@ inline void get_serial_commands() {
         #endif
 
         // Add the command to the queue
-        _enqueuecommand(serial_line_buffer[i], true
+        _enqueuecommand(serial_line_buffer[i], true //Experimental set to false
           #if NUM_SERIAL > 1
             , i
           #endif
